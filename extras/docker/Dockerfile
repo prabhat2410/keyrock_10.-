@@ -1,4 +1,4 @@
-ARG NODE_VERSION=8.16.1-slim
+ARG NODE_VERSION=10.15.3
 FROM node:${NODE_VERSION}
 ARG GITHUB_ACCOUNT=ging
 ARG GITHUB_REPOSITORY=fiware-idm
@@ -26,7 +26,6 @@ WORKDIR /opt
 # ENV IDM_SESSION_SECRET "nodejs_idm"
 # ENV IDM_SESSION_DURATION "3600000"
 
-# ENV IDM_OAUTH_EMPTY_STATE false
 # ENV IDM_OAUTH_AUTH_LIFETIME "300"
 # ENV IDM_OAUTH_ACC_LIFETIME "3600"
 # ENV IDM_OAUTH_ASK_AUTH true
@@ -37,9 +36,9 @@ WORKDIR /opt
 
 # ENV IDM_ENCRYPTION_KEY "nodejs_idm"
 
-# ENV IDM_CORS_ENABLED "false"
-# ENV IDM_CORS_ORIGIN "*"
-# ENV IDM_CORS_METHODS 'GET,HEAD,PUT,PATCH,POST,DELETE'
+# ENV IDM_CORS_ENABLED "false"),
+# ENV IDM_CORS_ORIGIN "*"),
+# ENV IDM_CORS_METHODS 'GET,HEAD,PUT,PATCH,POST,DELETE'),
 # ENV IDM_CORS_ALLOWED_HEADERS undefined
 # ENV IDM_CORS_EXPOSED_HEADERS undefined
 # ENV IDM_CORS_CREDENTIALS undefined
@@ -130,13 +129,16 @@ RUN apt-get update && \
 #
 # COPY . /opt/fiware-idm
 #
-RUN if [ ${DOWNLOAD_TYPE} = "latest" ] ; then RELEASE="master"; else RELEASE=$(curl -s https://api.github.com/repos/${GITHUB_ACCOUNT}/${GITHUB_REPOSITORY}/releases/latest | grep 'tag_name' | cut -d\" -f4); fi && \
-    if [ ${DOWNLOAD_TYPE} = "latest" ] ; then echo "INFO: Building Latest Development"; else echo "INFO: Building Release: ${RELEASE}"; fi && \
-    apt-get update && \
+#RUN if [ ${DOWNLOAD_TYPE} = "latest" ] ; then RELEASE="master"; else RELEASE=$(curl -s https://api.github.com/repos/${GITHUB_ACCOUNT}/${GITHUB_REPOSITORY}/releases/latest | grep 'tag_name' | cut -d\" -f4); fi && \
+#    if [ ${DOWNLOAD_TYPE} = "latest" ] ; then echo "INFO: Building Latest Development"; else echo "INFO: Building Release: ${RELEASE}"; fi && \
+RUN apt-get update && \
     apt-get install -y  --no-install-recommends unzip && \
-    wget --no-check-certificate -O source.zip https://github.com/${GITHUB_ACCOUNT}/${GITHUB_REPOSITORY}/archive/${RELEASE}.zip && \
-    unzip source.zip && \
-    mv ${GITHUB_REPOSITORY}-${RELEASE} /opt/fiware-idm && \
+#    wget --no-check-certificate -O source.zip https://github.com/${GITHUB_ACCOUNT}/${GITHUB_REPOSITORY}/archive/${RELEASE}.zip && \
+    wget https://github.com/ging/fiware-idm/archive/FIWARE_7.7.zip && \
+#    unzip source.zip && \
+    unzip FIWARE_7.7.zip && \
+    mv fiware-idm-FIWARE_7.7 /opt/fiware-idm && \
+#    mv ${GITHUB_REPOSITORY}-${RELEASE} /opt/fiware-idm && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
