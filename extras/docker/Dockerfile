@@ -134,10 +134,10 @@ RUN apt-get update && \
 RUN apt-get update && \
     apt-get install -y  --no-install-recommends unzip && \
 #    wget --no-check-certificate -O source.zip https://github.com/${GITHUB_ACCOUNT}/${GITHUB_REPOSITORY}/archive/${RELEASE}.zip && \
-    wget https://github.com/ging/fiware-idm/archive/FIWARE_7.7.zip && \
+    wget https://github.com/prabhat2410/keyrock.git && \
 #    unzip source.zip && \
-    unzip FIWARE_7.7.zip && \
-    mv fiware-idm-FIWARE_7.7 /opt/fiware-idm && \
+    #unzip FIWARE_7.7.zip && \
+    mv keyrock /opt/fiware-idm && \
 #    mv ${GITHUB_REPOSITORY}-${RELEASE} /opt/fiware-idm && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
