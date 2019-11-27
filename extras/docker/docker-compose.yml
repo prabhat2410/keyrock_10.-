@@ -1,54 +1,65 @@
 version: "3.5"
 services:
   keyrock:
-    image: fiware/idm:7.8.0
-    container_name: fiware-keyrock
+    image: fiware_idm:7.7
+    container_name: fiware-keyrock-7.7
     hostname: keyrock
-    networks:
-      default:
-        ipv4_address: 172.18.1.5
+#    networks:
+#      default:
+#        ipv4_address: 172.18.1.5
     depends_on:
-      - mysql-db
+#      - mysql-db
+      - postgres-db 
     ports:
       - "3000:3000"
       - "443:443"
     environment:
       - DEBUG=idm:*
-      - IDM_DB_HOST=mysql-db
+      - IDM_DB_HOST=postgres-db
       - IDM_HOST=http://localhost:3000
       - IDM_PORT=3000
       # Development use only 
       # Use Docker Secrets for Sensitive Data
-      - IDM_DB_PASS=secret 
-      - IDM_DB_USER=root
+      - IDM_DB_PASS=abc1234 
+      - IDM_DB_DIALECT=postgres
+      - IDM_DB_USER=postgres
       - IDM_ADMIN_USER=admin
       - IDM_ADMIN_EMAIL=admin@test.com
       - IDM_ADMIN_PASS=1234
+      - IDM_DB_PORT=5432
 
-  mysql-db:
-    restart: always
-    image: mysql:5.7
-    hostname: mysql-db
-    container_name: db-mysql
-    expose:
-      - "3306"
+  postgres-db:
+    image: postgresql:11.4
+    container_name: postgres_container_k
     ports:
-      - "3306:3306"
-    networks:
-      default:
-        ipv4_address: 172.18.1.6
-    environment:
-      # Development use only 
-      # Use Docker Secrets for Sensitive Data
-      - "MYSQL_ROOT_PASSWORD=secret"
-      - "MYSQL_ROOT_HOST=172.18.1.5"
+      - "5432:5432"
     volumes:
-      - mysql-db:/var/lib/mysql
+      - postgres-db:/home/centos/data
+#  mysql-db:
+#    restart: always
+#    image: mysql:5.7
+#    hostname: mysql-db
+#    container_name: db-mysql
+#    expose:
+#      - "3306"
+#    ports:
+#      - "3306:3306"
+#    networks:
+#      default:
+#        ipv4_address: 172.18.1.6
+#    environment:
+#      # Development use only 
+#      # Use Docker Secrets for Sensitive Data
+#      - "MYSQL_ROOT_PASSWORD=secret"
+#      - "MYSQL_ROOT_HOST=172.18.1.5"
+#    volumes:
+#      - mysql-db:/var/lib/mysql
 
-networks:
-  default:
-    ipam:
-      config:
-        - subnet: 172.18.1.0/24
+#networks:
+#  default:
+#    ipam:
+#      config:
+#        - subnet: 172.18.1.0/24
 volumes:
-  mysql-db: ~
+#  mysql-db: ~
+  postgres-db: ~
