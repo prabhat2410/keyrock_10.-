@@ -55,7 +55,6 @@ config.cors = {
 
 // Config oauth2 parameters
 config.oauth2 = {
-    allow_empty_state: (process.env.IDM_OAUTH_EMPTY_STATE || false),                       // allow empty state in request
     authorization_code_lifetime: (process.env.IDM_OAUTH_AUTH_LIFETIME || 5 * 60),        // Five minutes
     access_token_lifetime: (process.env.IDM_OAUTH_ACC_LIFETIME || 60 * 60),              // One hour
     ask_authorization: (process.env.IDM_OAUTH_ASK_AUTH || true),                         // Prompt a message to users to allow the application to read their details
@@ -97,12 +96,12 @@ config.usage_control = {
 
 // Database info
 config.database  = {
-    host:     (process.env.IDM_DB_HOST || 'localhost'),
-    password: (process.env.IDM_DB_PASS || 'idm'),
-    username: (process.env.IDM_DB_USER || 'root'),
+    host:     (process.env.IDM_DB_HOST || '192.168.100.157'),
+    password: (process.env.IDM_DB_PASS || 'abc1234'),
+    username: (process.env.IDM_DB_USER || 'postgres'),
     database: (process.env.IDM_DB_NAME || 'idm'),
-    dialect:  (process.env.IDM_DB_DIALECT || 'mysql'),
-    port:     (process.env.IDM_DB_PORT || undefined)
+    dialect:  (process.env.IDM_DB_DIALECT || 'postgres'),
+    port:     (process.env.IDM_DB_PORT || '5432')
     //define: { charset: 'latin1', dialectOptions: { collate: 'latin1_bin' }},
     //define: { charset: 'utf8mb4', dialectOptions: { collate: 'utf8mb4_unicode_ci' }},
   };
@@ -150,22 +149,6 @@ config.eidas = {
     metadata_expiration: (process.env.IDM_EIDAS_METADATA_LIFETIME || 60 * 60 * 24 * 365) // One year
 }
 
-// Enables the possibility of adding identity attributes in users' profile
-config.identity_attributes = {
-    /* eslint-disable snakecase/snakecase */
-    enabled: false,
-    attributes: [
-        {name: 'Vision', key: 'vision', type: 'number', minVal: '0', maxVal: '100'},
-        {name: 'Color Perception', key: 'color', type: 'number', minVal: '0', maxVal: '100'},
-        {name: 'Hearing', key: 'hearing', type: 'number', minVal: '0', maxVal: '100'},
-        {name: 'Vocal Capability', key: 'vocal', type: 'number', minVal: '0', maxVal: '100'},
-        {name: 'Manipulation Strength', key: 'manipulation', type: 'number', minVal: '0', maxVal: '100'},
-        {name: 'Reach', key: 'reach', type: 'number', minVal: '0', maxVal: '100'},
-        {name: 'Cognition', key: 'cognition', type: 'number', minVal: '0', maxVal: '100'}
-    ]
-    /* eslint-enable snakecase/snakecase */
-}
-
 
 if (config.session.secret === 'nodejs_idm' || config.password_encryption.key  === 'nodejs_idm'){
     /* eslint-disable no-console */
@@ -173,7 +156,7 @@ if (config.session.secret === 'nodejs_idm' || config.password_encryption.key  ==
     console.log('WARNING: The current encryption keys match the defaults found in the plaintext');
     console.log('         template file - please update for a production instance');
     console.log('****************');
-    /* eslint-enable no-console */
+    /* eslint-enalbe no-console */
 }
 
 
