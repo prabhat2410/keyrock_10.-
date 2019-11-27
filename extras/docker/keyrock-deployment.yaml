@@ -40,7 +40,7 @@ spec:
           value: http://localhost:3000
         - name: IDM_PORT
           value: "3000"
-        image: csp2-centos-4:5000/fiware-keyrock
+        image: csp2-centos-1:5000/fiware-idm
         name: keyrock
         resources:
          limits:
