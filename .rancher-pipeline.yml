@@ -10,8 +10,8 @@ stages:
     env:
       PLUGIN_DEBUG: "true"
       PLUGIN_INSECURE: "true"
-      PLUGIN_STORAGE_PATH: /var/lib/docker2      
-timeout: 60
+      PLUGIN_STORAGE_PATH: /var/lib/docker2
+timeout: 300
 notification:
   recipients:
   - recipient: Ashima.Aggarwal@india.nec.com
