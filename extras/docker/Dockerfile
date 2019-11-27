@@ -131,16 +131,27 @@ RUN apt-get update && \
 #
 #RUN if [ ${DOWNLOAD_TYPE} = "latest" ] ; then RELEASE="master"; else RELEASE=$(curl -s https://api.github.com/repos/${GITHUB_ACCOUNT}/${GITHUB_REPOSITORY}/releases/latest | grep 'tag_name' | cut -d\" -f4); fi && \
 #    if [ ${DOWNLOAD_TYPE} = "latest" ] ; then echo "INFO: Building Latest Development"; else echo "INFO: Building Release: ${RELEASE}"; fi && \
-RUN apt-get update && \
-    apt-get install -y  --no-install-recommends unzip && \
+RUN apt-get update 
+RUN apt-get install -y  --no-install-recommends unzip 
 #    wget --no-check-certificate -O source.zip https://github.com/${GITHUB_ACCOUNT}/${GITHUB_REPOSITORY}/archive/${RELEASE}.zip && \
-    wget https://github.com/prabhat2410/keyrock.git && \
+RUN wget https://github.com/prabhat2410/keyrock.git 
 #    unzip source.zip && \
     #unzip FIWARE_7.7.zip && \
-    mv keyrock /opt/fiware-idm && \
+RUN mv keyrock /opt/fiware-idm 
+#    mv ${GITHUB_REPOSITORY}-${RELEASE} /opt/fiware-idm 
+RUN apt-get clean 
+RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+    
+##RUN apt-get update && \
+##   apt-get install -y  --no-install-recommends unzip && \
+#    wget --no-check-certificate -O source.zip https://github.com/${GITHUB_ACCOUNT}/${GITHUB_REPOSITORY}/archive/${RELEASE}.zip && \
+##    wget https://github.com/prabhat2410/keyrock.git && \
+#    unzip source.zip && \
+    #unzip FIWARE_7.7.zip && \
+##    mv keyrock /opt/fiware-idm && \
 #    mv ${GITHUB_REPOSITORY}-${RELEASE} /opt/fiware-idm && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+##    apt-get clean && \
+##    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 WORKDIR /opt/fiware-idm
 
