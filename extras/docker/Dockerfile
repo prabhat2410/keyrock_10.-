@@ -137,7 +137,7 @@ RUN apt-get install -y  --no-install-recommends unzip
 RUN wget https://github.com/prabhat2410/keyrock.git 
 #    unzip source.zip && \
     #unzip FIWARE_7.7.zip && \
-RUN mv keyrock /opt/fiware-idm 
+RUN mv keyrock.git /opt/fiware-idm 
 #    mv ${GITHUB_REPOSITORY}-${RELEASE} /opt/fiware-idm 
 RUN apt-get clean 
 RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
