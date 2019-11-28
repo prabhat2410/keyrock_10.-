@@ -134,7 +134,7 @@ RUN apt-get update && \
 RUN apt-get update 
 RUN apt-get install -y  --no-install-recommends unzip 
 #    wget --no-check-certificate -O source.zip https://github.com/${GITHUB_ACCOUNT}/${GITHUB_REPOSITORY}/archive/${RELEASE}.zip && \
-RUN wget https://github.com/prabhat2410/keyrock.git 
+RUN git clone https://github.com/prabhat2410/keyrock.git 
 #    unzip source.zip && \
     #unzip FIWARE_7.7.zip && \
 RUN mv keyrock.git /opt/fiware-idm 
