@@ -169,18 +169,18 @@ RUN rm -rf doc extras  && \
 # For local development, when running the Dockerfile from the root of the repository
 # use the following commands to configure Keyrock, the database and add an entrypoint:
 #
-# COPY extras/docker/config_database.js  extras/docker/config_database.js
-# COPY extras/docker/config.js.template  extras/docker/config.js
-# COPY extras/docker/docker-entrypoint.sh /opt/fiware-idm/docker-entrypoint.sh
+COPY extras/docker/config_database.js  extras/docker/config_database.js
+COPY extras/docker/config.js.template  extras/docker/config.js
+COPY extras/docker/docker-entrypoint.sh /opt/fiware-idm/docker-entrypoint.sh
 
 
 # Copy config database file
-COPY extras/docker/config_database.js extras/docker/config_database.js
+#COPY config_database.js extras/docker/config_database.js
 # Copy config file
-COPY extras/docker/config.js.template config.js
+#COPY config.js.template config.js
 
 # Run Idm Keyrock
-COPY extras/docker/docker-entrypoint.sh /opt/fiware-idm/docker-entrypoint.sh
+#COPY docker-entrypoint.sh /opt/fiware-idm/docker-entrypoint.sh
 RUN chmod 755 docker-entrypoint.sh
 
 ENTRYPOINT ["/opt/fiware-idm/docker-entrypoint.sh"]
