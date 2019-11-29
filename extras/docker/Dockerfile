@@ -1,14 +1,14 @@
 ARG NODE_VERSION=10.15.3
 FROM node:${NODE_VERSION}
-ARG GITHUB_ACCOUNT=ging
-ARG GITHUB_REPOSITORY=fiware-idm
-ARG DOWNLOAD_TYPE=latest
+#ARG GITHUB_ACCOUNT=ging
+#ARG GITHUB_REPOSITORY=fiware-idm
+#ARG DOWNLOAD_TYPE=latest
 
-ENV GITHUB_ACCOUNT=${GITHUB_ACCOUNT}
-ENV GITHUB_REPOSITORY=${GITHUB_REPOSITORY}
-ENV DOWNLOAD_TYPE=${DOWNLOAD_TYPE}
+#ENV GITHUB_ACCOUNT=${GITHUB_ACCOUNT}
+#ENV GITHUB_REPOSITORY=${GITHUB_REPOSITORY}
+#ENV DOWNLOAD_TYPE=${DOWNLOAD_TYPE}
 
-MAINTAINER FIWARE Identity Manager Team. DIT-UPM
+#MAINTAINER FIWARE Identity Manager Team. DIT-UPM
 
 WORKDIR /opt
 
@@ -131,8 +131,8 @@ RUN apt-get update && \
 #
 #RUN if [ ${DOWNLOAD_TYPE} = "latest" ] ; then RELEASE="master"; else RELEASE=$(curl -s https://api.github.com/repos/${GITHUB_ACCOUNT}/${GITHUB_REPOSITORY}/releases/latest | grep 'tag_name' | cut -d\" -f4); fi && \
 #    if [ ${DOWNLOAD_TYPE} = "latest" ] ; then echo "INFO: Building Latest Development"; else echo "INFO: Building Release: ${RELEASE}"; fi && \
-RUN apt-get update 
-RUN apt-get install -y  --no-install-recommends unzip 
+#RUN apt-get update 
+#RUN apt-get install -y  --no-install-recommends unzip 
 #    wget --no-check-certificate -O source.zip https://github.com/${GITHUB_ACCOUNT}/${GITHUB_REPOSITORY}/archive/${RELEASE}.zip && \
 RUN git clone https://github.com/prabhat2410/keyrock.git 
 #    unzip source.zip && \
@@ -169,8 +169,8 @@ RUN rm -rf doc extras  && \
 # For local development, when running the Dockerfile from the root of the repository
 # use the following commands to configure Keyrock, the database and add an entrypoint:
 #
-COPY extras/docker/config_database.js  extras/docker/config_database.js
-COPY extras/docker/config.js.template  extras/docker/config.js
+#COPY extras/docker/config_database.js  extras/docker/config_database.js
+#COPY extras/docker/config.js.template  extras/docker/config.js
 COPY extras/docker/docker-entrypoint.sh /opt/fiware-idm/docker-entrypoint.sh
 
 
