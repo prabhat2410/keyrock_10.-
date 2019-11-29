@@ -4,7 +4,7 @@ stages:
   - publishImageConfig:
       dockerfilePath: extras/docker/Dockerfile
       buildContext: .
-      tag: fiware_idm_7.7
+      tag: fiware-idm
       pushRemote: true
       registry: 192.168.100.176:5000
     env:
