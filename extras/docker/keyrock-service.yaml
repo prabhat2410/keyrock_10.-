@@ -22,7 +22,7 @@ spec:
     port: 3000
     protocol: TCP
     nodePort: 30052
-    targetPort: 30052
+  #  targetPort: 30052
   selector:
     workloadID_keyrockserv: "true"
   sessionAffinity: None
