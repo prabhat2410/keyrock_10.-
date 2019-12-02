@@ -18,7 +18,7 @@ spec:
       paths:
       - backend:
           serviceName: keyrockserv
-          servicePort: 3000
+          servicePort: 30050
         path: /
 status:
   loadBalancer: {}
