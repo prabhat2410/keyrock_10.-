@@ -16,14 +16,16 @@ spec:
   externalIPs:
   - 192.168.100.171
   externalTrafficPolicy: Cluster
+  type: NodePort
   ports:
   - name: keyrockport
-    port: 30050
+    port: 3000
     protocol: TCP
-    targetPort: 30050
+    nodePort: 30050
+    targetPort: 3000
   selector:
     workloadID_keyrockserv: "true"
   sessionAffinity: None
-  type: NodePort
+  
 status:
   loadBalancer: {}
