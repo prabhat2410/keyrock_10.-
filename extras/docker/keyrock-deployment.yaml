@@ -37,7 +37,7 @@ spec:
         - name: IDM_DB_USER
           value: postgres
         - name: IDM_HOST
-          value: http://localhost:3000
+          value: http://localhost:30050
         - name: IDM_PORT
           value: "30050"
         image: csp2-centos-1:5000/fiware-idm
@@ -50,7 +50,7 @@ spec:
           memory: "250Mi"
           cpu: "250m"
         ports:
-        - containerPort: 3000
+        - containerPort: 30050
         resources: {}
       restartPolicy: Always
 status: {}
