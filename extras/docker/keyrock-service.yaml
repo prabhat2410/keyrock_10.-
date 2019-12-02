@@ -18,9 +18,9 @@ spec:
   externalTrafficPolicy: Cluster
   ports:
   - name: keyrockport
-    port: 3000
+    port: 30050
     protocol: TCP
-    targetPort: 3000
+    targetPort: 30050
   selector:
     workloadID_keyrockserv: "true"
   sessionAffinity: None
