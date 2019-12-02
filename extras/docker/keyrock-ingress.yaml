@@ -4,7 +4,7 @@ metadata:
   annotations:
     field.cattle.io/creatorId: user-g2sjq
     field.cattle.io/ingressState: '{"a2V5cm9jay9maXdhcmUveGlwLmlvLy8vMzAwMA==":""}'
-    field.cattle.io/publicEndpoints: '[{"addresses":["\u003cnil\u003e"],"port":80,"protocol":"HTTP","serviceName":"fiware:keyrockserv","ingressName":"fiware:keyrock","hostname":"keyrock.fiware.30.0.0.29.xip.io","path":"/","allNodes":true}]'
+    field.cattle.io/publicEndpoints: '[{"addresses":["\u003cnil\u003e"],"port":80,"protocol":"HTTP","serviceName":"fiware:keyrockserv","ingressName":"fiware:keyrock","hostname":"keyrock.fiware.30.0.0.2.xip.io","path":"/","allNodes":true}]'
   creationTimestamp: null
   generation: 1
   labels:
