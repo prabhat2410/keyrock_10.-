@@ -9,16 +9,16 @@ metadata:
   generation: 1
   labels:
     cattle.io/creator: norman
-  name: keyrock
+  name: keyrock-pipeline
   namespace: fiware
  # selfLink: /apis/extensions/v1beta1/namespaces/fiware/ingresses/keyrock
 spec:
   rules:
-  - host: keyrock.fiware.30.0.0.2.xip.io
+  - host: keyrock-pipeline.fiware.30.0.0.2.xip.io
     http:
       paths:
       - backend:
-          serviceName: keyrockserv
+          serviceName: keyrockserv-pipeline
           servicePort: 3000
         path: /
 status:
