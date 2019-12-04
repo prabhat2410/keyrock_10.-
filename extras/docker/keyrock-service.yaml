@@ -12,7 +12,7 @@ metadata:
     cattle.io/creator: norman
   name: keyrockserv
   namespace: fiware
-  selfLink: /api/v1/namespaces/p-bvfxs-pipeline/services/keyrockserv
+ # selfLink: /api/v1/namespaces/p-bvfxs-pipeline/services/keyrockserv
 spec:
   externalIPs:
   - 192.168.100.171
