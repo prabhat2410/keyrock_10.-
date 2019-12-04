@@ -10,7 +10,8 @@ metadata:
   labels:
     cattle.io/creator: norman
   name: keyrock
-  selfLink: /apis/extensions/v1beta1/namespaces/fiware/ingresses/keyrock
+  namespace: fiware
+ # selfLink: /apis/extensions/v1beta1/namespaces/fiware/ingresses/keyrock
 spec:
   rules:
   - host: keyrock.fiware.30.0.0.2.xip.io
