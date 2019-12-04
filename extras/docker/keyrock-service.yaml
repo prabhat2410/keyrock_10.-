@@ -14,8 +14,8 @@ metadata:
   namespace: fiware
  # selfLink: /api/v1/namespaces/p-bvfxs-pipeline/services/keyrockserv
 spec:
-  externalIPs:
-  - 192.168.100.171
+#  externalIPs:
+ # - 192.168.100.171
   externalTrafficPolicy: Cluster
   type: NodePort
   ports:
