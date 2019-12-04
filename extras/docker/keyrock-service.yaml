@@ -10,7 +10,7 @@ metadata:
   creationTimestamp: null
   labels:
     cattle.io/creator: norman
-  name: keyrockserv
+  name: keyrockserv-pipeline
   namespace: fiware
  # selfLink: /api/v1/namespaces/p-bvfxs-pipeline/services/keyrockserv
 spec:
@@ -25,7 +25,8 @@ spec:
     nodePort: 30052
     targetPort: 3000
   selector:
-    workloadID_keyrockserv: "true"
+  #  workloadID_keyrockserv: "true"
+    name: keyrock-pipeline
   sessionAffinity: None
 status:
   loadBalancer: {}
