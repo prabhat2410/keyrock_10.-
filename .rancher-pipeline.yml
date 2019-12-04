@@ -14,7 +14,7 @@ stages:
     when:
       event:
         include:
-        - tag
+        - push
   when:
     event: {}
 - name: Deploy
