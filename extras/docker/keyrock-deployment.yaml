@@ -7,7 +7,7 @@ metadata:
   labels:
   #  io.kompose.service: keyrock
   name: keyrock-pipeline
-  namespace: fiware
+  #namespace: fiware
 spec:
   replicas: 1
   strategy: {}
