@@ -6,7 +6,7 @@ metadata:
     kompose.version: 1.7.0 (HEAD)
   labels:
     io.kompose.service: keyrock
-  name: keyrock
+  name: keyrock-pipeline
   namespace: fiware
 spec:
   replicas: 1
@@ -15,7 +15,8 @@ spec:
     metadata:
       creationTimestamp: null
       labels:
-        io.kompose.service: keyrock
+       # io.kompose.service: keyrock
+       name: keyrock-pipeline
     spec:
       containers:
       - env:
