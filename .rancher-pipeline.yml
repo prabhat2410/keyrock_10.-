@@ -11,6 +11,10 @@ stages:
       PLUGIN_DEBUG: "true"
       PLUGIN_INSECURE: "true"
       PLUGIN_STORAGE_PATH: /var/lib/docker2
+    when:
+      event:
+        include:
+        - tag
   when:
     event: {}
 - name: Deploy
@@ -19,8 +23,6 @@ stages:
       path: extras/docker/keyrock-deployment.yaml
   - applyYamlConfig:
       path: extras/docker/keyrock-service.yaml
-  - applyYamlConfig:
-      path: extras/docker/keyrock-ingress.yaml
 timeout: 300
 notification:
   recipients:
