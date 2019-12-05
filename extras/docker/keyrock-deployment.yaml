@@ -41,7 +41,7 @@ spec:
           value: http://localhost:3000
         - name: IDM_PORT
           value: "3000"
-        image: fiware-idm
+        image: idm-keyrock:7.7
         name: keyrock
         resources:
          limits:
