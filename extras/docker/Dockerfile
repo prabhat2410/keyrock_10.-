@@ -16,7 +16,7 @@ WORKDIR /opt
 # ALL ENVIRONMENT VARIABLES
 #
 # ENV IDM_HOST "http://localhost"
-# ENV IDM_PORT "3000"
+#ENV IDM_PORT "3000"
 
 # ENV IDM_DEBUG "true"
 
@@ -137,7 +137,7 @@ RUN apt-get update && \
 RUN git clone https://github.com/prabhat2410/keyrock.git 
 #    unzip source.zip && \
     #unzip FIWARE_7.7.zip && \
-RUN mv keyrock /opt/fiware-idm 
+RUN mv keyrock /opt/ 
 #    mv ${GITHUB_REPOSITORY}-${RELEASE} /opt/fiware-idm 
 RUN apt-get clean 
 RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
@@ -153,10 +153,9 @@ RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 ##    apt-get clean && \
 ##    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-WORKDIR /opt/fiware-idm
+WORKDIR /opt/keyrock
 
-RUN rm -rf doc extras  && \
-    npm cache clean -f   && \
+RUN npm cache clean -f   && \
     npm install --production  && \
     rm -rf /root/.npm/cache/* && \
     mkdir certs && \
@@ -165,13 +164,13 @@ RUN rm -rf doc extras  && \
     openssl x509 -req -in idm-2018-csr.pem -signkey idm-2018-key.pem -out idm-2018-cert.pem && \
     mv idm-2018-key.pem idm-2018-cert.pem idm-2018-csr.pem certs/
 
-
+WORKDIR /opt/keyrock/extras/docker/
 # For local development, when running the Dockerfile from the root of the repository
 # use the following commands to configure Keyrock, the database and add an entrypoint:
 #
-COPY config_database.js  /opt/fiware-idm/extras/docker/config_database.js
-COPY config.js.template  /opt/fiware-idm/extras/docker/config.js
-COPY docker-entrypoint.sh /opt/fiware-idm/docker-entrypoint.sh
+#COPY config_database.js  /opt/fiware-idm/extras/docker/config_database.js
+#COPY config.js.template  /opt/fiware-idm/extras/docker/config.js
+#COPY docker-entrypoint.sh /opt/fiware-idm/docker-entrypoint.sh
 
 
 # Copy config database file
@@ -183,7 +182,7 @@ COPY docker-entrypoint.sh /opt/fiware-idm/docker-entrypoint.sh
 #COPY docker-entrypoint.sh /opt/fiware-idm/docker-entrypoint.sh
 RUN chmod 755 docker-entrypoint.sh
 
-ENTRYPOINT ["/opt/fiware-idm/docker-entrypoint.sh"]
+ENTRYPOINT ["docker-entrypoint.sh"]
 
 # Ports used by idm
 EXPOSE ${IDM_PORT}
