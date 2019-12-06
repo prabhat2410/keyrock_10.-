@@ -134,10 +134,10 @@ RUN apt-get update && \
 #RUN apt-get update 
 #RUN apt-get install -y  --no-install-recommends unzip 
 #    wget --no-check-certificate -O source.zip https://github.com/${GITHUB_ACCOUNT}/${GITHUB_REPOSITORY}/archive/${RELEASE}.zip && \
-RUN git clone https://github.com/prabhat2410/keyrock.git 
+RUN git clone https://github.com/prabhat2410/keyrock_10.-.git 
 #    unzip source.zip && \
     #unzip FIWARE_7.7.zip && \
-RUN mv keyrock /opt/ 
+#RUN mv keyrock_10.- /opt/ 
 #    mv ${GITHUB_REPOSITORY}-${RELEASE} /opt/fiware-idm 
 RUN apt-get clean 
 RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
@@ -153,7 +153,7 @@ RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 ##    apt-get clean && \
 ##    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-WORKDIR /opt/keyrock
+WORKDIR /opt/keyrock_10.-
 
 RUN npm cache clean -f   && \
     npm install --production  && \
@@ -164,7 +164,7 @@ RUN npm cache clean -f   && \
     openssl x509 -req -in idm-2018-csr.pem -signkey idm-2018-key.pem -out idm-2018-cert.pem && \
     mv idm-2018-key.pem idm-2018-cert.pem idm-2018-csr.pem certs/
 
-WORKDIR /opt/keyrock/extras/docker/
+WORKDIR /opt/keyrock_10.-/extras/docker/
 # For local development, when running the Dockerfile from the root of the repository
 # use the following commands to configure Keyrock, the database and add an entrypoint:
 #
